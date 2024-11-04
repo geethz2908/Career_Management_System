@@ -18,6 +18,7 @@ import AcademicPerformance from './components/academic_performance';
 import Requirements from './components/Requirements';
 
 import './App.css';
+import StudentRegistrationFlow from './components/StudentRegistrationFlow';
 
 function App() {
   return (
@@ -30,9 +31,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/academic_performance" component={AcademicPerformance} />
+          <Route path="/academic-performance" element={<AcademicPerformance />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/student-profile" element={<StudentProfile />} />
+          <Route path="/student-registration" element={<StudentRegistrationFlow />} />
           <Route path="/skills" element={<Skills />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/companies" element={<Companies />} />
