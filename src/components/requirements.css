@@ -1,0 +1,68 @@
+.requirements-container {
+    max-width: 600px;
+    margin: 2em auto;
+    padding: 2em;
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    color: #333;
+  }
+  
+  .requirements-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+  }
+  
+  .requirements-field {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    margin-bottom: 1.5em;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease;
+  }
+  
+  .requirements-field:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .requirements-field label {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 0.5em;
+    font-size: 1em;
+  }
+  
+  .requirements-field input {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    color: #333;
+    background-color: #f7f9fc;
+    transition: background-color 0.3s ease;
+  }
+  
+  .requirements-field input:focus {
+    outline: none;
+    background-color: #e3f2fd;
+  }
+  
+  .requirements-container button {
+    margin-top: 10px;
+    padding: 0.5em 1em;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .requirements-container button:hover {
+    background-color: #0056b3;
+  }
+  

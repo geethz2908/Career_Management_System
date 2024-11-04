@@ -1,0 +1,149 @@
+/* signup.css */
+
+.signup-modal {
+  max-width: 400px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.signup-modal h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.signup-modal p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.signup-form label {
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  margin: 10px 0 4px;
+  color: #333;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 4px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.signup-form small {
+  color: #999;
+  font-size: 12px;
+}
+
+.signup-button {
+  background-color: #0056d2;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.signup-button:hover {
+  background-color: #0041a8;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  color: #888;
+  font-size: 12px;
+  margin: 16px 0;
+}
+
+.separator hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+.separator span {
+  margin: 0 8px;
+}
+
+.social-login-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
+
+.social-button.google {
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #151414;
+}
+
+.social-button.google:hover {
+  background-color: #abe7f3;
+}
+
+.social-button.facebook {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #151414;
+}
+
+.social-button.facebook:hover {
+  background-color: #abe7f3;
+}
+
+.social-button.apple {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #151414;
+}
+
+.social-button.apple:hover {
+  background-color: #abe7f3;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.already-user {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.already-user a {
+  color: #0056d2;
+  text-decoration: none;
+}
+
+.already-user a:hover {
+  text-decoration: underline;
+}

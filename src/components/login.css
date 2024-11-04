@@ -1,0 +1,146 @@
+/* login.css */
+
+.login-container {
+  width: 400px; /* Set width for the login container */
+  margin: 50px auto; /* Center the container vertically and horizontally */
+  padding: 20px; /* Add padding around the content */
+  background-color: #fff; /* Set background color */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.login-container h2 {
+  text-align: center; /* Center the heading */
+  margin-bottom: 20px; /* Space below heading */
+}
+
+form {
+  display: flex; /* Use flexbox for form layout */
+  flex-direction: column; /* Stack items vertically */
+}
+
+input[type="email"],
+input[type="password"] {
+  padding: 10px; /* Padding inside the input fields */
+  margin-bottom: 15px; /* Space below input fields */
+  border: 1px solid #ccc; /* Border for input fields */
+  border-radius: 5px; /* Rounded corners for input fields */
+  font-size: 16px; /* Font size for input text */
+  width: 100%; /* Set width to 100% to fill the container */
+  box-sizing: border-box; /* Ensure padding and borders are included in total width */
+}
+
+.password-field {
+  position: relative; /* Positioning for eye icon */
+}
+
+.eye-icon {
+  position: absolute; /* Absolute positioning for eye icon */
+  right: 10px; /* Right padding for eye icon */
+  top: 50%; /* Center the icon vertically */
+  transform: translateY(-50%); /* Align icon perfectly in the middle */
+  cursor: pointer; /* Change cursor to pointer */
+  z-index: 1; /* Ensure icon is on top of the input */
+}
+
+button {
+  padding: 10px; /* Padding inside buttons */
+  margin-bottom: 10px; /* Space below buttons */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners for buttons */
+  background-color: #007BFF; /* Primary button color */
+  color: white; /* Text color */
+  font-size: 16px; /* Font size for button text */
+  cursor: pointer; /* Change cursor to pointer */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.separator {
+  display: flex; /* Flexbox for separator layout */
+  align-items: center; /* Center items vertically */
+  margin: 20px 0; /* Space above and below the separator */
+}
+
+.separator hr {
+  flex-grow: 1; /* Allow horizontal line to grow */
+  border: 0; /* Remove default border */
+  border-top: 1px solid #ccc; /* Line color */
+}
+
+.separator span {
+  margin: 0 10px; /* Space around the text */
+  color: #777; /* Text color */
+}
+
+.social-login-buttons {
+  display: flex; /* Flexbox for social buttons layout */
+  flex-direction: column; /* Stack buttons vertically */
+}
+
+.social-button {
+  display: flex; /* Flexbox for social button layout */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  padding: 10px; /* Padding inside social buttons */
+  margin-bottom: 10px; /* Space below social buttons */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners for social buttons */
+  background-color: #f0f0f0; /* Light background for social buttons */
+  color: #333; /* Text color for social buttons */
+  font-size: 16px; /* Font size for button text */
+  cursor: pointer; /* Change cursor to pointer */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.social-button:hover {
+  background-color: #e0e0e0; /* Darker shade on hover */
+}
+
+.icon {
+  margin-right: 10px; /* Space between icon and text */
+}
+
+.not-a-user {
+  text-align: center; /* Center text */
+  margin-top: 20px; /* Space above text */
+}
+
+.not-a-user a {
+  color: #007BFF; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.not-a-user a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.forgot-password {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  margin-top: 10px;
+  text-decoration: underline;
+  font-size: 0.9em;
+}
+
+.forgot-password:hover {
+  color: #0056b3;
+}
+
+/* forgot-password.css */
+.forgot-password-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}

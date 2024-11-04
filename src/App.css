@@ -1,0 +1,40 @@
+/* App.css */
+/* General application styles */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: #f8f9fa; /* Light grey background for all pages */
+  color: #333; /* Dark grey text */
+  font-family: Arial, sans-serif;
+}
+
+/* Logo styles */
+/* You can keep this if the logo is used in other components */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  transition: filter 300ms ease, transform 300ms ease;
+}
+
+/* Logo shadow effect */
+.logo:hover {
+  filter: drop-shadow(0 0 2em #a0c1ff); /* Soft blue shadow */
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Button styling */
+button {
+  background-color: #a0c1ff; /* Soft blue */
+  color: #ffffff;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+button:hover {
+  background-color: #2e2e3a; /* Dark grey on hover */
+}

@@ -1,0 +1,65 @@
+/* projects.css */
+.projects-container {
+  max-width: 500px;
+  margin: 2em auto;
+  padding: 2em;
+  background: #333;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.projects-container h2 {
+  text-align: center;
+  color: #fefcfc;
+  margin-bottom: 1.5em;
+  font-size: 1.8em;
+}
+
+.project-card {
+  padding: 1.5em;
+  background: #f7f9fc;
+  border-radius: 8px;
+  margin-bottom: 1.5em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.input-group label {
+  font-weight: bold;
+  color: #555;
+  margin-right: 10px;
+  width: 35%;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 0.5em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  background-color: #fff;
+}
+
+.add-project-button {
+  display: block;
+  width: 100%;
+  padding: 0.75em;
+  background-color: #007bff;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1em;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-project-button:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,45 @@
+/* dashboard.css */
+
+.dashboard-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.dashboard-container h1 {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.dashboard-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.dashboard-box {
+  background-color: #007bff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-box a {
+  text-decoration: none;
+  color: #f8f9fa;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.dashboard-box a:hover {
+  color: #0056b3;
+}

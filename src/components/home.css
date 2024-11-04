@@ -1,0 +1,89 @@
+/* Home.css */
+.home-container {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.hero {
+  background-image: url('/frontend/src/components/back.png');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  min-height: 400px; /* Ensures a minimum height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+
+.caption {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.cta-button {
+  padding: 0.5em 1.5em;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #e67e22;
+}
+
+main {
+  margin-top: 2em;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  margin: 2em 0;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.feature {
+  max-width: 250px;
+  text-align: center;
+  margin: 1em;
+}
+
+.feature-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Optional: round the corners of feature images */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1em;
+}
+
+footer {
+  margin-top: 2em;
+  padding: 1em;
+  background-color: #333;
+  color: white;
+  text-align: center;
+}
+
+footer a {
+  color: #f39c12;
+  margin: 0 1em;
+}
+
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature {
+    margin-bottom: 2em;
+  }
+}

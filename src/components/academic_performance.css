@@ -1,0 +1,45 @@
+/* academic_performance.css */
+.academic-performance-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 2em;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.academic-performance-container h2 {
+    text-align: center;
+    color: #333;
+}
+
+.academic-performance-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.academic-performance-container label {
+    margin-top: 1em;
+    color: #333;
+}
+
+.academic-performance-container input {
+    padding: 0.5em;
+    margin-top: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.academic-performance-container button {
+    margin-top: 1em;
+    padding: 0.5em;
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.academic-performance-container button:hover {
+    background-color: #357ae8;
+}
