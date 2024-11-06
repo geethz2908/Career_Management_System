@@ -1,67 +1,41 @@
 // components/Companies.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './companies.css';
 
 const Companies = () => {
+  // Sample data for companies
   const [companies, setCompanies] = useState([
-    { id: 'C001', name: 'TechCorp', industry: 'Technology' }
+    { id: 'C001', name: 'TechCorp', industry: 'Technology' },
   ]);
 
-  const handleInputChange = (e, index) => {
-    const { name, value } = e.target;
-    const updatedCompanies = [...companies];
-    updatedCompanies[index][name] = value;
-    setCompanies(updatedCompanies);
-  };
-
-  const addCompany = () => {
-    setCompanies([
-      ...companies,
-      { id: `C00${companies.length + 1}`, name: '', industry: '' }
-    ]);
-  };
+  useEffect(() => {
+    // Simulating a fetch call to get company data
+    // Here you can replace this with actual logic to fetch company data if needed
+    // For now, using static data in the state
+  }, []);
 
   return (
     <div className="companies-container">
       <h2>Companies</h2>
-      {companies.map((company, index) => (
+      {companies.map((company) => (
         <div key={company.id} className="company-card">
-          <div className="input-group">
+          <div className="company-info">
             <label>Company ID:</label>
-            <input
-              type="text"
-              name="id"
-              value={company.id}
-              onChange={(e) => handleInputChange(e, index)}
-              readOnly
-            />
+            <p>{company.id}</p>
           </div>
-          <div className="input-group">
+          <div className="company-info">
             <label>Company Name:</label>
-            <input
-              type="text"
-              name="name"
-              value={company.name}
-              onChange={(e) => handleInputChange(e, index)}
-              placeholder="Enter company name"
-            />
+            <p>{company.name}</p>
           </div>
-          <div className="input-group">
+          <div className="company-info">
             <label>Industry:</label>
-            <input
-              type="text"
-              name="industry"
-              value={company.industry}
-              onChange={(e) => handleInputChange(e, index)}
-              placeholder="Enter industry"
-            />
+            <p>{company.industry}</p>
           </div>
         </div>
       ))}
-      <button className="add-company-button" onClick={addCompany}>Add Company</button>
       <div className="job-listings-link">
-        <Link to="/JobListings">Job Listings</Link>
+        <Link to="/job">Job Listings</Link>
       </div>
     </div>
   );

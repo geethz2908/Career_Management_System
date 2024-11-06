@@ -1,13 +1,14 @@
+/* JobListings.css */
+
 .job-listings-container {
   max-width: 500px;
   margin: 2em auto;
   padding: 2em;
-  background-color: #333; /* Change or keep this */
+  background-color: #333; /* Keep the dark background */
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  color: white; /* Add this to ensure text is visible */
+  color: rgb(8, 8, 8); /* Ensure text is visible */
 }
-
 
 .job-listings-container h2 {
   text-align: center;
@@ -16,32 +17,24 @@
   font-size: 1.8em;
 }
 
-.job-card {
-  padding: 1.5em;
-  background: #f7f9fc;
-  border-radius: 8px;
-  margin-bottom: 1.5em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 .input-group {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 1em;
 }
 
 .input-group label {
-  font-weight: bold;
-  color: #555;
-  margin-right: 10px;
-  width: 35%;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+  color: #fcf8f8;
 }
 
 .input-group input {
-  flex: 1;
-  padding: 0.5em;
-  border: 1px solid #ddd;
+  width: 100%;
+  padding: 0.75em;
   border-radius: 4px;
+  border: 1px solid #ddd;
   font-size: 1em;
   background-color: #fff;
 }
@@ -53,15 +46,64 @@
   background-color: #007bff;
   color: #ffffff;
   font-weight: bold;
-  font-size: 1em;
+  font-size: 1.2em;
   border: none;
   border-radius: 8px;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 .add-job-button:hover {
   background-color: #0056b3;
+}
+
+.job-details-display {
+  margin-top: 1.5em;
+  background-color: #f7f9fc;
+  padding: 1.5em;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;  /* Ensure text is aligned to the left */
+  display: block; /* Ensure block-level layout for child elements */
+}
+
+.job-details-display h3 {
+  margin-bottom: 1em;
+  font-size: 1.5em;
+}
+
+.job-details-display p {
+  font-size: 1.1em;
+  color: #333;
+  text-align: left;  /* Ensure text is aligned to the left */
+  margin: 5px 0; /* Optional: Adjust spacing between lines */
+}
+
+/* This section ensures job ID and job title are aligned to the left */
+.job-details-display .job-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.job-info span {
+  font-size: 1.1em;
+  color: #333;
+}
+
+.job-listings-link {
+  text-align: left;
+  margin-top: 2em;
+}
+
+.job-listings-link a {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.job-listings-link a:hover {
+  text-decoration: underline;
 }

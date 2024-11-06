@@ -24,46 +24,27 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.input-group {
+.company-info {
   display: flex;
   align-items: center;
   margin-bottom: 1em;
 }
 
-.input-group label {
+.company-info label {
   font-weight: bold;
   color: #555;
   margin-right: 10px;
   width: 35%;
 }
 
-.input-group input {
+.company-info p {
   flex: 1;
   padding: 0.5em;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1em;
   background-color: #fff;
-}
-
-.add-company-button {
-  display: block;
-  width: 100%;
-  padding: 0.75em;
-  background-color: #007bff;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 1em;
-  border: none;
-  border-radius: 8px;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 1em;
-}
-
-.add-company-button:hover {
-  background-color: #0056b3;
+  margin: 0;
 }
 
 .job-listings-link {

@@ -4,7 +4,7 @@ import './JobListings.css'; // Create a CSS file for styling
 
 const JobListings = () => {
   const [jobListings, setJobListings] = useState([
-    { id: 'J001', title: 'Software Engineer', description: 'Develop and maintain software applications.', expectedSalary: '' }
+    { id: 'J001', title: 'Software Engineer', description: 'Develop and maintain software applications.', expectedSalary: '', requiredSkills: '' }
   ]);
 
   const handleInputChange = (e, index) => {
@@ -17,7 +17,7 @@ const JobListings = () => {
   const addJobListing = () => {
     setJobListings([
       ...jobListings,
-      { id: `J00${jobListings.length + 1}`, title: '', description: '', expectedSalary: '' }
+      { id: `J00${jobListings.length + 1}`, title: '', description: '', expectedSalary: '', requiredSkills: '' }
     ]);
   };
 
@@ -57,18 +57,42 @@ const JobListings = () => {
             />
           </div>
           <div className="input-group">
-            <label>Expected Salary:</label>
+            <label>Salary Range:</label>
             <input
               type="text"
               name="expectedSalary"
               value={job.expectedSalary}
               onChange={(e) => handleInputChange(e, index)}
-              placeholder="Enter expected salary"
+              placeholder="Enter salary range"
+            />
+          </div>
+          <div className="input-group">
+            <label>Required Skills:</label>
+            <input
+              type="text"
+              name="requiredSkills"
+              value={job.requiredSkills}
+              onChange={(e) => handleInputChange(e, index)}
+              placeholder="Enter required skills"
             />
           </div>
         </div>
       ))}
       <button className="add-job-button" onClick={addJobListing}>Add Job Listing</button>
+      
+      {/* Display job details below the button */}
+      <div className="job-details-display">
+        <h3>Job Listings:</h3>
+        {jobListings.map((job, index) => (
+          <div key={job.id} className="job-details">
+            <p><strong>Job ID:</strong> {job.id}</p>
+            <p><strong>Title:</strong> {job.title}</p>
+            <p><strong>Description:</strong> {job.description}</p>
+            <p><strong>Salary Range:</strong> {job.expectedSalary}</p>
+            <p><strong>Required Skills:</strong> {job.requiredSkills}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
