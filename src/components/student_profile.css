@@ -14,6 +14,12 @@
   margin-bottom: 1.5em;
   font-size: 1.8em;
 }
+.gender-select {
+  display: flex;
+  /* text-align: center; */
+  justify-content: space-between;
+  font-size: 1em;
+}
 
 .profile-field {
   margin-top: 1em;

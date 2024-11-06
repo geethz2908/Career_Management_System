@@ -1,0 +1,257 @@
+/* student_registration.css */
+.academic-performance-container {
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 2em;
+    background-color: #333;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .academic-performance-container h2 {
+    text-align: center;
+    color: #fefcfc;
+    margin-bottom: 1.5em;
+    font-size: 1.8em;
+  }
+  
+  .registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .form-field {
+    margin-bottom: 1em;
+  }
+  
+  .form-field label {
+    display: flex;
+    flex-direction: column;
+    color: #fefcfc;
+    font-weight: bold;
+    gap: 0.5em;
+  }
+  
+  .form-field input {
+    padding: 0.7em;
+    border: 1px solid #444;
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #444;
+    color: #fff;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-field input:focus {
+    outline: none;
+    border-color: #4285F4;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 1em;
+    margin-top: 1em;
+  }
+  
+  .submit-button, .back-button {
+    padding: 0.8em 1.2em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    flex: 1;
+  }
+  
+  .submit-button {
+    background-color: #4285F4;
+    color: #fff;
+  }
+  
+  .submit-button:hover {
+    background-color: #3367D6;
+  }
+  
+  .back-button {
+    background-color: #666;
+    color: #fff;
+  }
+  
+  .back-button:hover {
+    background-color: #555;
+  }
+  
+  .progress-indicator {
+    margin-bottom: 2em;
+    padding: 1em;
+  }
+  
+  .progress-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin: 0 auto;
+    width: 80%;
+  }
+  
+  .progress-step {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #666;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+  }
+  
+  .progress-step.active {
+    background-color: #4285F4;
+  }
+  
+  .progress-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #666;
+    z-index: 0;
+  }
+  
+  /* Error states */
+  .form-field input:invalid {
+    border-color: #dc3545;
+  }
+  
+  /* Success states */
+  .form-field input:valid {
+    border-color: #28a745;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .academic-performance-container {
+      margin: 1em;
+      padding: 1.5em;
+    }
+  
+    .form-field input {
+      font-size: 16px;
+    }
+  
+    .submit-button, .back-button {
+      padding: 1em;
+    }
+  
+    .progress-bar {
+      width: 100%;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Add these styles to your existing CSS file */
+
+.added-items-list {
+    margin: 1em 0;
+    padding: 1em;
+    background-color: #fff7f7;
+    border-radius: 8px;
+}
+
+.item-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    margin-bottom: 0.8em;
+    background-color: #040000;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.item-card:hover {
+    background-color: #666;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+
+.item-details strong {
+    color: #4285F4;
+}
+
+.item-details span {
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.add-item-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.8em 1.2em;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 1em;
+    transition: background-color 0.2s ease;
+}
+
+.add-item-button:hover {
+    background-color: #218838;
+}
+
+.remove-item-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.4em 0.8em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.remove-item-button:hover {
+    background-color: #c82333;
+}
+
+.next-button {
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    padding: 0.8em 1.2em;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1;
+    transition: background-color 0.2s ease;
+}
+
+.next-button:hover {
+    background-color: #3367D6;
+}
+
+.next-button:disabled,
+.submit-button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+}

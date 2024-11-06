@@ -1,142 +1,119 @@
-// components/AcademicPerformance.jsx
 import React, { useState } from 'react';
-import './academic_performance.css';
 
-const AcademicPerformance = () => {
-  const [gpa, setGpa] = useState('');
-  const [creditsCompleted, setCreditsCompleted] = useState('');
-  const [programmingConceptsPercentage, setProgrammingConceptsPercentage] = useState('');
-  const [algorithmsConceptsPercentage, setAlgorithmsConceptsPercentage] = useState('');
-  const [softwareEngineeringPercentage, setSoftwareEngineeringPercentage] = useState('');
-  const [computerNetworksPercentage, setComputerNetworksPercentage] = useState('');
-  const [electronicsSubjectsPercentage, setElectronicsSubjectsPercentage] = useState('');
-  const [computerArchitecturePercentage, setComputerArchitecturePercentage] = useState('');
-  const [mathematicsPercentage, setMathematicsPercentage] = useState('');
-  const [communicationSkillsProjects, setCommunicationSkillsProjects] = useState('');
-  const [operatingSystemsPercentage, setOperatingSystemsPercentage] = useState('');
+const AcademicPerformance = ({ studentId }) => {
+  const [formData, setFormData] = useState({
+    gpa: '',
+    credits_completed: '',
+    programming_concepts_percentage: '',
+    algorithms_concepts_percentage: '',
+    software_engineering_percentage: '',
+    computer_network_percentage: '',
+    electronic_subjects_percentage: '',
+    computer_architecture_percentage: '',
+    mathematics_percentage: '',
+    communication_skills_percentage: '',
+    operating_systems_percentage: ''
+  });
 
-  const handleSubmit = (e) => {
+  const [status, setStatus] = useState({
+    loading: false,
+    error: null,
+    success: false
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can handle the submission here (e.g., save data or display it)
-    console.log({
-      gpa,
-      creditsCompleted,
-      programmingConceptsPercentage,
-      algorithmsConceptsPercentage,
-      softwareEngineeringPercentage,
-      computerNetworksPercentage,
-      electronicsSubjectsPercentage,
-      computerArchitecturePercentage,
-      mathematicsPercentage,
-      communicationSkillsProjects,
-      operatingSystemsPercentage,
-    });
+    setStatus({ loading: true, error: null, success: false });
+
+    try {
+      const response = await fetch('/add-academic-performance', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          student_id: studentId,
+          ...formData
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit academic performance');
+      }
+
+      setStatus({ loading: false, error: null, success: true });
+      setFormData({
+        gpa: '',
+        credits_completed: '',
+        programming_concepts_percentage: '',
+        algorithms_concepts_percentage: '',
+        software_engineering_percentage: '',
+        computer_network_percentage: '',
+        electronic_subjects_percentage: '',
+        computer_architecture_percentage: '',
+        mathematics_percentage: '',
+        communication_skills_percentage: '',
+        operating_systems_percentage: ''
+      });
+    } catch (error) {
+      setStatus({ loading: false, error: error.message, success: false });
+    }
   };
 
   return (
-    <div className="academic-performance-container">
+    <div className="additional-info-container">
       <h2>Academic Performance</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>GPA:</label>
-          <input
-            type="number"
-            value={gpa}
-            onChange={(e) => setGpa(e.target.value)}
-            required
-          />
+        {Object.keys(formData).map((field) => (
+          <div key={field} className="info-field">
+            <label htmlFor={field}>
+              {field.split('_').map(word => 
+                word.charAt(0).toUpperCase() + word.slice(1)
+              ).join(' ')}:
+            </label>
+            <input
+              type="number"
+              step="0.01"
+              id={field}
+              name={field}
+              value={formData[field]}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        ))}
+
+        {status.error && (
+          <div className="submitted-data-box">
+            <h3>Error</h3>
+            <p>{status.error}</p>
+          </div>
+        )}
+
+        {status.success && (
+          <div className="submitted-data-box">
+            <h3>Success</h3>
+            <p>Academic performance submitted successfully!</p>
+          </div>
+        )}
+
+        <div className="info-field">
+          <button 
+            type="submit" 
+            disabled={status.loading}
+            className="submitted-data-box button"
+          >
+            {status.loading ? 'Submitting...' : 'Submit'}
+          </button>
         </div>
-        <div>
-          <label>Credits Completed:</label>
-          <input
-            type="number"
-            value={creditsCompleted}
-            onChange={(e) => setCreditsCompleted(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Programming Concepts Percentage:</label>
-          <input
-            type="number"
-            value={programmingConceptsPercentage}
-            onChange={(e) => setProgrammingConceptsPercentage(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Algorithms Concepts Percentage:</label>
-          <input
-            type="number"
-            value={algorithmsConceptsPercentage}
-            onChange={(e) => setAlgorithmsConceptsPercentage(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Software Engineering Percentage:</label>
-          <input
-            type="number"
-            value={softwareEngineeringPercentage}
-            onChange={(e) => setSoftwareEngineeringPercentage(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Computer Networks Percentage:</label>
-          <input
-            type="number"
-            value={computerNetworksPercentage}
-            onChange={(e) => setComputerNetworksPercentage(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Electronics Subjects Percentage:</label>
-          <input
-            type="number"
-            value={electronicsSubjectsPercentage}
-            onChange={(e) => setElectronicsSubjectsPercentage(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Computer Architecture Percentage:</label>
-          <input
-            type="number"
-            value={computerArchitecturePercentage}
-            onChange={(e) => setComputerArchitecturePercentage(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Mathematics Percentage:</label>
-          <input
-            type="number"
-            value={mathematicsPercentage}
-            onChange={(e) => setMathematicsPercentage(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Communication Skills Projects:</label>
-          <input
-            type="number"
-            value={communicationSkillsProjects}
-            onChange={(e) => setCommunicationSkillsProjects(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Operating Systems Percentage:</label>
-          <input
-            type="number"
-            value={operatingSystemsPercentage}
-            onChange={(e) => setOperatingSystemsPercentage(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Submit</button>
       </form>
     </div>
   );
