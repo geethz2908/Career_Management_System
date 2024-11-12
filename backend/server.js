@@ -11,12 +11,7 @@
 // app.use('/uploads', express.static('uploads'));
 
 
-// const db = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'roshr1331',
-//     database: 'career_manage'
-// });
+
 
 // const storage = multer.diskStorage({
 //     destination: (req, file, cb) => {
