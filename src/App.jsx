@@ -20,6 +20,7 @@ import StudentLogin from './components/StudentLogin';
 import DashboardCompany from './components/dashboardCompany';
 import AcademicPerformance from './components/AcademicPerformance'
 import CompanyInfo from './components/CompanyInfo'; 
+import StudentRegistrationFlow from './components/StudentRegistrationFlow';
 
 import './App.css';
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="/CompanyInfo" element={<CompanyInfo />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/student-profile" element={<StudentProfile />} />
+          <Route path="/student-registration" element={<StudentRegistrationFlow />} />
           <Route path="/skills" element={<Skills />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/companies" element={<Companies />} />
