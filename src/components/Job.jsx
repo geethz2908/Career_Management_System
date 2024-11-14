@@ -1,67 +1,80 @@
-// components/Job.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Job.css';
 
 const Job = () => {
-  // Sample data for jobs
-  const [jobs, setJobs] = useState([
-    {
-      jobid: 'J001',
-      jobtitle: 'Software Engineer',
-      jobdescription: 'Develop and maintain software applications.',
-      salaryrange: '60,000 - 80,000 USD',
-      requiredskills: 'JavaScript, React, Node.js, MongoDB'
-    },
-    {
-      jobid: 'J002',
-      jobtitle: 'Data Scientist',
-      jobdescription: 'Analyze and interpret complex data to help companies make decisions.',
-      salaryrange: '70,000 - 100,000 USD',
-      requiredskills: 'Python, Machine Learning, SQL, Pandas'
-    },
-    {
-      jobid: 'J003',
-      jobtitle: 'Product Manager',
-      jobdescription: 'Oversee the development and marketing of products.',
-      salaryrange: '80,000 - 110,000 USD',
-      requiredskills: 'Leadership, Market Research, Agile, Communication'
-    }
-  ]);
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Simulating a fetch call to get job data
-    // Replace this with actual logic to fetch job data if needed
-    // Using static data here for now
+    const fetchJobs = async () => {
+      try {
+        const response = await fetch('http://localhost:5001/jobs');
+        if (!response.ok) {
+          throw new Error('Failed to fetch jobs');
+        }
+        const data = await response.json();
+        setJobs(data);
+        setLoading(false);
+      } catch (err) {
+        setError('Failed to load job listings. Please try again later.');
+        setLoading(false);
+      }
+    };
+
+    fetchJobs();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="job-container">
+        <h2>Job Listings</h2>
+        <div className="job-card">Loading job listings...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="job-container">
+        <h2>Job Listings</h2>
+        <div className="job-card">{error}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="job-container">
       <h2>Job Listings</h2>
-      {jobs && jobs.map((job) => (
-        <div key={job.jobid} className="job-card">
-          <div className="job-info">
-            <label>Job ID:</label>
-            <p>{job.jobid}</p>
+      {jobs.length === 0 ? (
+        <div className="job-card">No job listings available.</div>
+      ) : (
+        jobs.map((job) => (
+          <div key={job.job_id} className="job-card">
+            <div className="job-info">
+              <label>Job ID:</label>
+              <p>{job.job_id}</p>
+            </div>
+            <div className="job-info">
+              <label>Job Title:</label>
+              <p>{job.job_title}</p>
+            </div>
+            <div className="job-info">
+              <label>Company:</label>
+              <p>{job.company_name}</p>
+            </div>
+            <div className="job-info">
+              <label>Description:</label>
+              <p>{job.job_description}</p>
+            </div>
+            <div className="job-info">
+              <label>Expected Salary:</label>
+              <p>${job.expected_salary?.toLocaleString() || 'Not specified'}</p>
+            </div>
           </div>
-          <div className="job-info">
-            <label>Job Title:</label>
-            <p>{job.jobtitle}</p>
-          </div>
-          <div className="job-info">
-            <label>Job Description:</label>
-            <p>{job.jobdescription}</p>
-          </div>
-          <div className="job-info">
-            <label>Salary Range:</label>
-            <p>{job.salaryrange}</p>
-          </div>
-          <div className="job-info">
-            <label>Required Skills:</label>
-            <p>{job.requiredskills}</p>
-          </div>
-        </div>
-      ))}
+        ))
+      )}
       <div className="companies-link">
         <Link to="/Companies">Companies</Link>
       </div>
