@@ -497,11 +497,12 @@ const port = 5001;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
+// app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
 app.use('/companies', companiesRouter);
-app.use('/api/jobs', jobsRouter);
+app.use('/Jobs', jobsRouter);
 app.use('/add-student', studentsRouter);
 app.use('/add-academic-performance', academicRouter);
 app.use('/add-projects', projectsRouter);

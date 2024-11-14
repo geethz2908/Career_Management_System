@@ -12,7 +12,7 @@ router.post('/', (req, res) => {
     } = req.body;
 
     db.query(
-        `INSERT INTO ACADEMIC_PERFORMANCE 
+        `INSERT INTO academic_performance 
         (student_id, gpa, credits_completed, programming_concepts_percentage,
          algorithms_concepts_percentage, software_engineering_percentage,
          computer_network_percentage, electronic_subjects_percentage,

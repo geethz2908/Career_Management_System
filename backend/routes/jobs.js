@@ -23,8 +23,8 @@ router.get('/:id', (req, res) => {
     
     const query = `
         SELECT j.*, c.company_name 
-        FROM JOB_LISTINGS j 
-        JOIN COMPANIES c ON j.company_id = c.company_id 
+        FROM job_listings j 
+        JOIN companies c ON j.company_id = c.company_id 
         WHERE j.job_id = ?
     `;
     

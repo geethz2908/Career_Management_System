@@ -21,6 +21,8 @@ import DashboardCompany from './components/dashboardCompany';
 import AcademicPerformance from './components/AcademicPerformance'
 import CompanyInfo from './components/CompanyInfo'; 
 import StudentRegistrationFlow from './components/StudentRegistrationFlow';
+import UpdateCompany from './components/UpdateCompany';
+// import DashboardCompany from './components/DashboardCompany';
 
 import './App.css';
 
@@ -38,6 +40,8 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboardCompany" element={<DashboardCompany />} />
+          <Route path="/update-company/:id" element={<UpdateCompany />} />
+          {/* <Route path="/dashboard-company" element={<DashboardCompany />} /> */}
           <Route path="/AcademicPerformance" element={<AcademicPerformance />} />
           <Route path="/CompanyInfo" element={<CompanyInfo />} />
           <Route path="/signup" element={<Signup />} />

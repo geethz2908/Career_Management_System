@@ -1,40 +1,105 @@
-// components/CompanyInfo.jsx
 import React, { useState } from 'react';
-import './companyInfo.css';
+import { useNavigate } from 'react-router-dom';
+import './CompanyInfo.css'
 
 const CompanyInfo = () => {
+  const navigate = useNavigate();
   const [companyDetails, setCompanyDetails] = useState({
     companyId: '',
     companyName: '',
     industry: '',
     companyDescription: '',
-    companyImage: null,
+    companyImage: null
   });
+  const [imagePreview, setImagePreview] = useState(null);
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCompanyDetails({
-      ...companyDetails,
-      [name]: value,
-    });
+    setCompanyDetails(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const handleImageChange = (e) => {
-    setCompanyDetails({
-      ...companyDetails,
-      companyImage: e.target.files[0],
-    });
+    const file = e.target.files[0];
+    if (file) {
+      setCompanyDetails(prev => ({
+        ...prev,
+        companyImage: file
+      }));
+      setImagePreview(URL.createObjectURL(file));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Logic to save the company details (e.g., sending data to a server)
-    console.log(companyDetails);
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      const formData = new FormData();
+      formData.append('companyId', companyDetails.companyId);
+      formData.append('companyName', companyDetails.companyName);
+      formData.append('industry', companyDetails.industry);
+      formData.append('companyDescription', companyDetails.companyDescription);
+      if (companyDetails.companyImage) {
+        formData.append('companyImage', companyDetails.companyImage);
+      }
+
+      const response = await fetch('http://localhost:5001/companies', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Error submitting company information');
+      }
+
+      const data = await response.json();
+      setSubmitSuccess(true);
+      
+      // Clear form after successful submission
+      setTimeout(() => {
+        setCompanyDetails({
+          companyId: '',
+          companyName: '',
+          industry: '',
+          companyDescription: '',
+          companyImage: null
+        });
+        setImagePreview(null);
+        setSubmitSuccess(false);
+        navigate('/JobListings'); // Redirect to companies list
+      }, 2000);
+
+    } catch (err) {
+      setError(err.message || 'Error submitting form');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="company-info-container">
       <h1>Company Information</h1>
+      
+      {error && (
+        <div className="error-message" style={{ color: 'red', marginBottom: '1rem' }}>
+          {error}
+        </div>
+      )}
+      
+      {submitSuccess && (
+        <div className="success-message" style={{ color: 'green', marginBottom: '1rem' }}>
+          Company information submitted successfully!
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="company-info-form">
         <div className="form-group">
           <label htmlFor="companyId">Company ID:</label>
@@ -45,8 +110,10 @@ const CompanyInfo = () => {
             value={companyDetails.companyId}
             onChange={handleChange}
             required
+            disabled={isSubmitting}
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="companyName">Company Name:</label>
           <input
@@ -56,8 +123,10 @@ const CompanyInfo = () => {
             value={companyDetails.companyName}
             onChange={handleChange}
             required
+            disabled={isSubmitting}
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="industry">Industry:</label>
           <input
@@ -67,8 +136,10 @@ const CompanyInfo = () => {
             value={companyDetails.industry}
             onChange={handleChange}
             required
+            disabled={isSubmitting}
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="companyDescription">Company Description:</label>
           <textarea
@@ -77,8 +148,10 @@ const CompanyInfo = () => {
             value={companyDetails.companyDescription}
             onChange={handleChange}
             required
+            disabled={isSubmitting}
           ></textarea>
         </div>
+
         <div className="form-group">
           <label htmlFor="companyImage">Company Image:</label>
           <input
@@ -86,21 +159,31 @@ const CompanyInfo = () => {
             id="companyImage"
             name="companyImage"
             onChange={handleImageChange}
-            required
+            accept="image/*"
+            disabled={isSubmitting}
           />
         </div>
-        <button type="submit" className="submit-btn">Submit</button>
+
+        <button 
+          type="submit" 
+          className="submit-btn" 
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Submitting...' : 'Submit'}
+        </button>
       </form>
 
-      {companyDetails.companyName && (
+      {(imagePreview || companyDetails.companyName) && (
         <div className="company-details-display">
-          <h2>Company Details</h2>
+          <h2>Company Details Preview</h2>
           <div className="company-info-box">
-            <img
-              src={companyDetails.companyImage ? URL.createObjectURL(companyDetails.companyImage) : ''}
-              alt={companyDetails.companyName}
-              className="company-image"
-            />
+            {imagePreview && (
+              <img
+                src={imagePreview}
+                alt={companyDetails.companyName || 'Company preview'}
+                className="company-image"
+              />
+            )}
             <div className="company-info-text">
               <p><strong>Company ID:</strong> {companyDetails.companyId}</p>
               <p><strong>Company Name:</strong> {companyDetails.companyName}</p>

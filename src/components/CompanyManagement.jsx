@@ -18,7 +18,7 @@ export const UpdateCompany = () => {
   useEffect(() => {
     const fetchCompany = async () => {
       try {
-        const response = await fetch(`http://localhost:5001/companies/${id}`);
+        const response = await fetch(`/api/companies/${id}`);
         if (!response.ok) throw new Error('Company not found');
         const data = await response.json();
         setCompany({
@@ -44,7 +44,7 @@ export const UpdateCompany = () => {
     if (image) formData.append('companyImage', image);
 
     try {
-      const response = await fetch(`http://localhost:5001/companies/${id}`, {
+      const response = await fetch(`/api/companies/${id}`, {
         method: 'PUT',
         body: formData,
       });
@@ -130,7 +130,7 @@ export const DeleteCompany = ({ companyId, onDelete }) => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:5001/companies/${companyId}`, {
+      const response = await fetch(`/api/companies/${companyId}`, {
         method: 'DELETE',
       });
       if (!response.ok) throw new Error('Failed to delete company');
@@ -170,7 +170,7 @@ export const DashboardCompany = () => {
 
   const fetchCompanies = async () => {
     try {
-      const response = await fetch('http://localhost:5001/companies/');
+      const response = await fetch('/api/companies');
       if (!response.ok) throw new Error('Failed to fetch companies');
       const data = await response.json();
       setCompanies(data);

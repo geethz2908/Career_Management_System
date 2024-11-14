@@ -6,12 +6,29 @@ const path = require('path');
 const fs = require('fs');
 
 router.get('/', (req, res) => {
-    db.query('SELECT * FROM COMPANIES', (err, result) => {
+    console.log('Fetching all companies...'); // Debug log
+    
+    // Use a promise to handle the query
+    const query = 'SELECT * FROM COMPANIES';
+    
+    db.query(query, [], (err, results) => {
         if (err) {
-            console.error(err);
-            return res.status(500).json({ error: 'Error fetching companies' });
+            console.error('Database error:', err);
+            return res.status(500).json({ error: 'Failed to fetch companies' });
         }
-        return res.json(result);
+        
+        console.log('Query results:', results); // Debug log
+        
+        if (!results) {
+            console.log('No results found');
+            return res.json([]);
+        }
+        
+        // Ensure we're sending an empty array if no results
+        const companies = results || [];
+        console.log('Sending response:', companies); // Debug log
+        
+        return res.json(companies);
     });
 });
 
