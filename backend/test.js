@@ -1,78 +1,80 @@
-const mysql = require('mysql2');
+// server.js or index.js
+const express = require('express');
+const mysql = require('mysql2/promise');
 const cors = require('cors');
-// Database connection
-require('dotenv').config();
 
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD ,
-    database: process.env.DB_NAME
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware
+app.use(cors()); // Enable CORS for all routes
+app.use(express.json()); // Parse JSON bodies
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
+
+// Database configuration
+const dbConfig = {
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'career_manage'
+};
+
+// Create connection pool
+const pool = mysql.createPool(dbConfig);
+
+// Basic route to test if server is running
+app.get('/', (req, res) => {
+    res.json({ message: 'Server is running!' });
 });
 
-// Sample company data
-// const sampleCompanies = [
-//     {
-//         company_id: 'TECH001',
-//         company_name: 'TechCorp Solutions',
-//         industry: 'Technology',
-//         company_description: 'Leading provider of innovative software solutions',
-//         image_path: null
-//     },
-//     {
-//         company_id: 'FIN002',
-//         company_name: 'Financial Dynamics',
-//         industry: 'Finance',
-//         company_description: 'Expert financial services and consulting',
-//         image_path: null
-//     },
-//     {
-//         company_id: 'HEALTH003',
-//         company_name: 'HealthCare Plus',
-//         industry: 'Healthcare',
-//         company_description: 'Advanced healthcare solutions and services',
-//         image_path: null
-//     }
-// ];
-
-// // Insert sample data
-// const insertSampleData = () => {
-//     sampleCompanies.forEach(company => {
-//         db.query(
-//             'INSERT INTO COMPANIES (company_id, company_name, industry, company_description, image_path) VALUES (?, ?, ?, ?, ?)',
-//             [company.company_id, company.company_name, company.industry, company.company_description, company.image_path],
-//             (err, result) => {
-//                 if (err) {
-//                     console.error(`Error inserting company ${company.company_name}:`, err);
-//                 } else {
-//                     console.log(`Successfully inserted company ${company.company_name}`);
-//                 }
-//             }
-//         );
-//     });
-// };
-
-
-
-
-
-// Connect to database and insert data
-db.connect((err) => {
-    if (err) {
-        console.error('Error connecting to database:', err);
-        return;
-    }
-    console.log('Connected to database');
-    insertSampleData();
-});
-
-// Close the connection after 5 seconds (giving time for inserts to complete)
-setTimeout(() => {
-    db.end((err) => {
-        if (err) {
-            console.error('Error closing connection:', err);
-            return;
+// Student skills routes
+app.get('/api/student-skills', async (req, res) => {
+    try {
+        const connection = await pool.getConnection();
+        try {
+            const [rows] = await connection.query('SELECT * FROM student_skill_summary');
+            const formattedData = rows.map(row => ({
+                student_id: row.student_id,
+                student_name: row.student_name,
+                total_skills: row.total_skills,
+                skills: row.skills ? row.skills.split(',') : [],
+                proficiency_levels: row.proficiency_levels ? row.proficiency_levels.split(',') : []
+            }));
+            res.json(formattedData);
+        } finally {
+            connection.release();
         }
-        console.log('Database connection closed');
+    } catch (error) {
+        console.error('Database Error:', error);
+        res.status(500).json({ error: 'Database operation failed' });
+    }
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: 'Something broke!' });
+});
+
+// Start the server
+const server = app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+}).on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+        console.error(`Port ${PORT} is already in use. Please try a different port.`);
+    } else {
+        console.error('Error starting server:', err);
+    }
+});
+
+// Handle graceful shutdown
+process.on('SIGTERM', () => {
+    console.info('SIGTERM signal received.');
+    server.close(() => {
+        console.log('Server closed.');
+        pool.end();
+        process.exit(0);
     });
-}, 5000);
+});
+
+module.exports = app;
