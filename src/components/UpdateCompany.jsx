@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-
+import './updateCompany.css';  // Ensure the correct import
 
 const UpdateCompany = () => {
   const { id } = useParams();
@@ -55,78 +55,101 @@ const UpdateCompany = () => {
   };
 
   if (loading) return (
-    <div className="flex items-center justify-center min-h-screen">
-      <span className="text-xl">Loading...</span>
+    <div className="loading-container">
+      <span>Loading...</span>
     </div>
   );
 
   if (error) return (
-    <div className="flex items-center justify-center min-h-screen">
-      <span className="text-red-500 text-xl">{error}</span>
+    <div className="error-container">
+      <span>{error}</span>
     </div>
   );
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-6">Update Company</h2>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="space-y-2">
-          <label className="block font-medium">
-            Company Name
-          </label>
+    <div className="company-info-container">
+      <h1>Update Company Information</h1>
+      <form onSubmit={handleSubmit} className="company-info-form">
+        <div className="form-group">
+          <label>Company Name</label>
           <input
             type="text"
             value={company.companyName}
             onChange={(e) => setCompany({ ...company, companyName: e.target.value })}
             required
-            className="w-full p-2 border rounded focus:outline-none focus:ring-2"
           />
         </div>
 
-        <div className="space-y-2">
-          <label className="block font-medium">
-            Industry
-          </label>
+        <div className="form-group">
+          <label>Industry</label>
           <input
             type="text"
             value={company.industry}
             onChange={(e) => setCompany({ ...company, industry: e.target.value })}
             required
-            className="w-full p-2 border rounded focus:outline-none focus:ring-2"
           />
         </div>
 
-        <div className="space-y-2">
-          <label className="block font-medium">
-            Description
-          </label>
+        <div className="form-group">
+          <label>Description</label>
           <textarea
             value={company.companyDescription}
             onChange={(e) => setCompany({ ...company, companyDescription: e.target.value })}
             required
-            className="w-full p-2 border rounded focus:outline-none focus:ring-2 min-h-[100px]"
           />
         </div>
 
-        <div className="space-y-2">
-          <label className="block font-medium">
-            Company Image
-          </label>
+        <div className="form-group">
+          <label>Company Image</label>
           <input
             type="file"
             onChange={(e) => setImage(e.target.files[0])}
             accept="image/*"
-            className="w-full p-2 border rounded focus:outline-none focus:ring-2"
           />
         </div>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2"
-        >
+        <button type="submit" className="submit-btn">
           Update Company
         </button>
       </form>
+
+      {/* Table to display company information */}
+      <div className="company-details-display">
+        <table className="company-info-table">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Company Name</td>
+              <td>{company.companyName}</td>
+            </tr>
+            <tr>
+              <td>Industry</td>
+              <td>{company.industry}</td>
+            </tr>
+            <tr>
+              <td>Description</td>
+              <td>{company.companyDescription}</td>
+            </tr>
+            {image && (
+              <tr>
+                <td>Company Image</td>
+                <td>
+                  <img
+                    src={URL.createObjectURL(image)}
+                    alt="Company"
+                    className="company-image"
+                  />
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
