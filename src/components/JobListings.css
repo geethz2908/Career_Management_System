@@ -1,67 +1,77 @@
-.job-listings-container {
-  max-width: 500px;
-  margin: 2em auto;
-  padding: 2em;
-  background-color: #333; /* Change or keep this */
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  color: white; /* Add this to ensure text is visible */
-}
-
-
-.job-listings-container h2 {
-  text-align: center;
-  color: #fefcfc;
-  margin-bottom: 1.5em;
-  font-size: 1.8em;
-}
-
-.job-card {
-  padding: 1.5em;
-  background: #f7f9fc;
-  border-radius: 8px;
-  margin-bottom: 1.5em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.input-group {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1em;
-}
-
-.input-group label {
-  font-weight: bold;
-  color: #555;
-  margin-right: 10px;
-  width: 35%;
-}
-
-.input-group input {
-  flex: 1;
-  padding: 0.5em;
-  border: 1px solid #ddd;
+.error-message {
+  color: #ff0000;
+  background-color: #ffe6e6;
+  padding: 10px;
   border-radius: 4px;
-  font-size: 1em;
-  background-color: #fff;
-}
-
-.add-job-button {
-  display: block;
-  width: 100%;
-  padding: 0.75em;
-  background-color: #007bff;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 1em;
-  border: none;
-  border-radius: 8px;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
   margin-bottom: 1em;
 }
 
-.add-job-button:hover {
-  background-color: #0056b3;
+.success-message {
+  color: #008000;
+  background-color: #e6ffe6;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 1em;
+}
+
+.job-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.delete-button,
+.update-button {
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+}
+
+.update-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2em;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 1em;
+  justify-content: flex-end;
+}
+
+.cancel-button {
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #6c757d;
+  color: white;
+  border: none;
 }

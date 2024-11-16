@@ -15,7 +15,7 @@ const Dashboard = () => {
           <Link to="/companies">Companies</Link>
         </div>
         <div className="dashboard-box">
-          <Link to="/JobListings">Job Listings</Link>
+          <Link to="/job">Job Listings</Link>
         </div>
         <div className="dashboard-box">
           <Link to="/projects">Projects</Link>
@@ -25,6 +25,12 @@ const Dashboard = () => {
         </div>
         <div className="dashboard-box">
           <Link to="/student-profile">Student Profile</Link>
+        </div>
+        <div className="dashboard-box">
+          <Link to="/student-registration">Student Registration</Link>
+        </div>
+        <div className="dashboard-box">
+          <Link to="/career-match">Career Match</Link>
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import './home.css';
 import feature1Image from './feature1.jpeg'; // Adjust the path as necessary
 import feature2Image from './feature2.jpeg'; // Adjust the path as necessary
 import feature3Image from './feature3.jpeg'; // Adjust the path as necessary
+import backgroundImage from './back4.jpg'; // Import the background image
 
 const Home = () => {
   const navigate = useNavigate(); // Initialize navigate function
@@ -36,7 +37,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <div className="hero">
+      <div className="hero" style={{ backgroundImage: `url(${backgroundImage})` }}>
         <div className="caption">Welcome to PathForge</div>
         <button className="cta-button" onClick={handleGetStarted}>Get Started</button>
       </div>

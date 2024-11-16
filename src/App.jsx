@@ -11,11 +11,19 @@ import Projects from './components/projects';
 import Companies from './components/companies';
 import AdditionalInfo from './components/additional_info';
 import JobListings from './components/JobListings'; // Update this line
+import Job from './components/Job'; 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import ForgotPassword from './components/ForgotPassword';
 import Dashboard from './components/dashboard';
-import AcademicPerformance from './components/academic_performance';
-import Requirements from './components/Requirements';
+import CompanyLogin from './components/CompanyLogin';
+import StudentLogin from './components/StudentLogin';
+import DashboardCompany from './components/dashboardCompany';
+import AcademicPerformance from './components/AcademicPerformance'
+import CompanyInfo from './components/CompanyInfo'; 
+import StudentRegistrationFlow from './components/StudentRegistrationFlow';
+import UpdateCompany from './components/UpdateCompany';
+import CareerMatchDashboard from './components/CareerMatchDashboard';
+// import DashboardCompany from './components/DashboardCompany';
 
 import './App.css';
 
@@ -28,17 +36,25 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/login/company" element={<CompanyLogin />} />
+          <Route path="/login/student" element={<StudentLogin />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/academic_performance" component={AcademicPerformance} />
+          <Route path="/dashboardCompany" element={<DashboardCompany />} />
+          <Route path="/update-company/:id" element={<UpdateCompany />} />
+          {/* <Route path="/career-match" element={<CareerMatchDashboard />} />  */}
+          <Route path="/AcademicPerformance" element={<AcademicPerformance />} />
+          <Route path="/CompanyInfo" element={<CompanyInfo />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/student-profile" element={<StudentProfile />} />
+          <Route path="/student-registration" element={<StudentRegistrationFlow />} />
           <Route path="/skills" element={<Skills />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/companies" element={<Companies />} />
-          <Route path="/requirements" component={Requirements} />
           <Route path="/additional_info" element={<AdditionalInfo />} />
           <Route path="/JobListings" element={<JobListings />} />
+          <Route path="/Job" element={<Job />} />
+          <Route path="/career-match" element={<CareerMatchDashboard />} /> 
         </Routes>
       </div>
     </Router>

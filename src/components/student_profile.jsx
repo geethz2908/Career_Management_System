@@ -75,8 +75,7 @@ const StudentProfile = () => {
         <li><Link to="/skills">Skills</Link></li>
         <li><Link to="/additional_info">Additional Info</Link></li>
         <li><Link to="/projects">Projects</Link></li>
-        <li><Link to="/academic_performance">Academic Performance</Link></li>
-        <li><Link to="/requirements">Add Requirements</Link></li>
+        <li><Link to="/AcademicPerformance">Academic Performance</Link></li>
       </ul>
     </div>
   );

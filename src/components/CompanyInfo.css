@@ -1,0 +1,113 @@
+/* companyInfo.css */
+
+.company-info-container {
+    max-width: 500px;
+    margin: 2em auto;
+    padding: 2em;
+    background-color: #333;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .company-info-container h1 {
+    text-align: center;
+    color: #fefcfc;
+    margin-bottom: 1.5em;
+    font-size: 1.8em;
+  }
+  
+  .company-info-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group {
+    width: 100%;
+    text-align: left;
+  }
+  
+  .form-group label {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #fcf8f8;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75em;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    background-color: #fff;
+  }
+  
+  .form-group textarea {
+    height: 150px;
+    resize: none;
+  }
+  
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75em;
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .company-details-display {
+    margin-top: 40px;
+    text-align: left;
+  }
+  
+  .company-info-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    background: #f7f9fc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .company-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .company-info-text p {
+    font-size: 1.1em;
+    color: #555;
+  }
+  
+  .job-listings-link {
+    text-align: center;
+    margin-top: 1em;
+  }
+  
+  .job-listings-link a {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .job-listings-link a:hover {
+    text-decoration: underline;
+  }
+  
