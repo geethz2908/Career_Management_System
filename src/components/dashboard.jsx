@@ -29,6 +29,9 @@ const Dashboard = () => {
         <div className="dashboard-box">
           <Link to="/student-registration">Student Registration</Link>
         </div>
+        <div className="dashboard-box">
+          <Link to="/career-match">Career Match</Link>
+        </div>
       </div>
     </div>
   );

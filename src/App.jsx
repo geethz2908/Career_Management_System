@@ -22,6 +22,7 @@ import AcademicPerformance from './components/AcademicPerformance'
 import CompanyInfo from './components/CompanyInfo'; 
 import StudentRegistrationFlow from './components/StudentRegistrationFlow';
 import UpdateCompany from './components/UpdateCompany';
+import CareerMatchDashboard from './components/CareerMatchDashboard';
 // import DashboardCompany from './components/DashboardCompany';
 
 import './App.css';
@@ -41,7 +42,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboardCompany" element={<DashboardCompany />} />
           <Route path="/update-company/:id" element={<UpdateCompany />} />
-          {/* <Route path="/dashboard-company" element={<DashboardCompany />} /> */}
+          {/* <Route path="/career-match" element={<CareerMatchDashboard />} />  */}
           <Route path="/AcademicPerformance" element={<AcademicPerformance />} />
           <Route path="/CompanyInfo" element={<CompanyInfo />} />
           <Route path="/signup" element={<Signup />} />
@@ -53,6 +54,7 @@ function App() {
           <Route path="/additional_info" element={<AdditionalInfo />} />
           <Route path="/JobListings" element={<JobListings />} />
           <Route path="/Job" element={<Job />} />
+          <Route path="/career-match" element={<CareerMatchDashboard />} /> 
         </Routes>
       </div>
     </Router>

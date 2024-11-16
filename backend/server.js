@@ -702,20 +702,20 @@ const validateMatchRequest = (req, res, next) => {
   
   // Utility functions
   function getRecommendationLevel(score) {
-    if (score >= 85) return 'Highly Recommended';
-    if (score >= 70) return 'Recommended';
-    if (score >= 50) return 'Potential Match';
+    if (score >= 50) return 'Highly Recommended';
+    if (score >= 40) return 'Recommended';
+    if (score >= 30) return 'Potential Match';
     return 'Not Recommended';
   }
   
   function getRecommendationMessage(score) {
-    if (score >= 85) {
+    if (score >= 50) {
       return 'Excellent match! Your skills and experience align very well with this position.';
     }
-    if (score >= 70) {
+    if (score >= 40) {
       return 'Good match! You meet most of the key requirements for this position.';
     }
-    if (score >= 50) {
+    if (score >= 30) {
       return 'Fair match. Consider improving some skills to increase your compatibility.';
     }
     return 'This position might not be the best fit for your current profile.';
@@ -798,15 +798,11 @@ const validateMatchRequest = (req, res, next) => {
           // Get skill match details using the correct view name
           const [skillMatchDetails] = await pool.query(
             `SELECT 
-              sss.skill_name,
-              sss.proficiency_level as student_proficiency,
-              jr.required_level as required_proficiency,
-              CASE 
-                WHEN jr.required_level = 0 THEN 100  -- Avoid division by zero
-                ELSE (sss.proficiency_level / jr.required_level * 100)
-              END as match_percentage
+              sss.skills as skill_name,
+              sss.proficiency_levels as student_proficiency
+              
             FROM student_skill_summary sss  -- Using the correct view name
-            JOIN job_requirements jr ON sss.skill_name = jr.skill_name
+            JOIN job_summary jr ON sss.skills = jr.job_description
             WHERE sss.student_id = ? AND jr.job_id = ?`,
             [studentId, jobId]
           );
@@ -873,6 +869,8 @@ const validateMatchRequest = (req, res, next) => {
           });
         }
       }
+
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
